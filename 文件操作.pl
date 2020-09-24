@@ -1,19 +1,11 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 
-#print "菜鸟教程网址?\n";
-#$name=<STDIN>;
-#print "网址:$name\n";
 
-open(DATA,"<import.txt") or die "无法打开数据";
-@lines=<DATA>;
-print "@lines\n";
-close(DATA);
 
-print "===============================1\n";
-open(DATA1,"<file1.txt");
-open(DATA2,">file2.txt");
-while(DATA1){
-	print DATA2 $_;
-}
-close(DATA1);
-close(DATA2);
+$str="Caine:Michael:Actor:14,LeafyDrive";
+#以冒号作为分隔符
+@array=split(/:/,$str);
+print "@array\n";
+
+my $substr1=substr("I love Perl",2,5);
+print "$substr1\n";

@@ -1,48 +1,34 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 
-$bar="I am runoob site. welcome to runoob site.";
-if($bar=~/run/){
-	print "第一次匹配\n";
-}else{
-	print "第一次不匹配\n";
-}
+$string="This string contains the number 25.11.";
+$string=~/-?(\d+)\.?(\d+)/;
 
-$bar="run";
-if($bar=~/run/){
-	print "第二次匹配\n";
-}else{
-	print "第二次不匹配\n";
-}
-
-print "1====================\n";
-$string="welcome to runoob site.";
-#匹配字符串
-$string =~ m/run/;
-print "匹配前的字符串：$`\n";
-print "匹配的字符串：$&\n";
-print "匹配后的字符串：$'\n";
-
-
-print "2====================\n";
-$string="welcome to google site.";
-#替换字符串
-$string =~ s/google/runoob/;
 print "$string\n";
 
-print "3====================\n";
-$string='welcome to runoob site';
-#将小写字符转换成大写字符
-$string =~ tr/a-z/A-Z/;
-print "$string\n";
+print "-------------------\n";
+$somework=q/i've some money/;
+print "$somework\n";
 
-print "4====================\n";
-$string='runoob';
-#去重复
-$string =~ tr/a-z/a-z/s;
-print "$string\n";
+$myword="catcat";
+$replaceword=qr(catcat);
+$finalword="ok" if($myword=~$replaceword);
+print "$finalword\n";
 
-print "5====================\n";
+print "===========q==========\n";
+#q:相当于单引号，输出变量的原值
+#使用q可以正常的输出特殊符号，不需要转义
+$someword = q/i 've some money/;
+print "$someword\n";
+print "-----------qq-----------\n";
+#这里的qq,可以理解为双引号，能正常解析变量
+my $strqq=qq,\n\nthis is qq test\n,;
+print "$strqq\n";
 
+$strqw=('a','b','c');
+$strqw1=qw{$strqw};
+print "\$strqw1:$strqw1\n";
 
-print "1====================\n";
-print "1====================\n";
+print "--------------qw---------------\n";
+@list=qw(perl java shell ruby);
+print "@list\n";
+
