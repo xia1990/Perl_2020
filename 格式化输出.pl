@@ -1,44 +1,32 @@
-#!/usr/bin/perl
+#!/usr/bin/perl 
 
-$text="google runoob taobao";
-format STDOUT=
-first:^<<<<<
-	$text
-second:^<<<<<
-	$text
-third:^<<<
-	$text
-.
-write
 
-print "1===============================\n";
-format EMPLOYEE=
-==========================
-@<<<<<<@<<
-$name,$age
-@#####.##
-$salary
-==========================
+format TITLE=
+************************
+名称	价格
+************************
 .
-select(STDOUT);
-$~=EMPLOYEE;
-@n=("kate","rose","lily");
-@a=(20,30,40);
-@s=(2000.00,3000.00,4000.00);
-$i=0;
-foreach(@n){
-	$name=$_;
-	$age=$a[$i];
-	$salary=$s[$i++];
-	write;
+
+format CONT=
+------------------------
+@<<<<<<<<<<<<<<<<@<<<<<
+$name,$price
+------------------------
+.
+
+@name=('红豆奶茶','经典奶茶','香芋奶茶','珍珠奶茶','西米露');
+@price=(15,18,20,18,19);
+$count=0;
+#$~ = STUDENT;和$^ = STUDENT_TOP;必须写在if语{}内
+if(open(FILE,">milk.txt")){
+	select(FILE);
+	$~=CONT;
+	$^=TITLE;
+	$count=0;
+	foreach (@name){
+		$name=$_;
+		$price=$price[$count++];
+		write;
+	}
+	close(FILE);
 }
-
-
-$~="MYFORMAT";
-write;
-format MYFORMAT=
-=====================
-	Text # 菜鸟教程
-=====================
-.
-WRITE;
